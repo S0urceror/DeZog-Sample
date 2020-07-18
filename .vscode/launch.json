@@ -1,0 +1,41 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "dezog",
+            "request": "launch",
+            "name": "Debug OpenMSX",
+            "remoteType": "openmsx",
+            "listFiles": [
+                {
+                    "path": "bin/hello.lst",
+                    "useFiles": true,
+                    "asm": "sjasmplus",
+                    "mainFile": "main.asm"
+                }
+            ],
+            //"history": {
+            //    "reverseDebugInstructionCount": 1000000,
+            //    "spotCount": 10,
+            //},
+            "startAutomatically": false,
+            //"skipInterrupt": true,
+            "commandsAfterLaunch": [
+                "-e openmsx_info version"
+            ],
+            "resetOnLaunch": false,
+            //"disassemblerArgs": {
+            //    "esxdosRst": true
+            //},
+            "rootFolder": "${workspaceFolder}",
+            //"topOfStack": "stack_top",
+            //"load": "z80-sample-program.sna",
+            //"load": "z80-sample-program.nex",
+            //"smallValuesMaximum": 513,
+            "tmpDir": ".tmp"
+        }
+    ]
+}
