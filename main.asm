@@ -16,6 +16,7 @@ BDOS equ 0005h
 ; PRINT a zero-terminated string in MSX-DOS
 ; INPUT: HL points to start of string
 PRINT:
+    ; ASSERT HL>=TXT_HELLO2 && HL<TXT_END
     ld a, (hl)
     and a
     ret z
@@ -31,3 +32,4 @@ PRINT:
 
 TXT_HELLO1 DB "Hello MSX!$"
 TXT_HELLO2 DB "\r\nDebugging with Dezog",0
+TXT_END

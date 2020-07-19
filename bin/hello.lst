@@ -17,27 +17,28 @@
 16    010F              ; PRINT a zero-terminated string in MSX-DOS
 17    010F              ; INPUT: HL points to start of string
 18    010F              PRINT:
-19    010F 7E               ld a, (hl)
-20    0110 A7               and a
-21    0111 C8               ret z
-22    0112                  ;
-23    0112 E5               push hl
-24    0113 5F               ld e, a
-25    0114 0E 02            ld c, _CONOUT
-26    0116 CD 05 00         call BDOS
-27    0119 E1               pop hl
-28    011A                  ;
-29    011A 23               inc hl
-30    011B 18 F2            jr PRINT
-31    011D
-32    011D 48 65 6C 6C  TXT_HELLO1 DB "Hello MSX!$"
-32    0121 6F 20 4D 53
-32    0125 58 21 24
-33    0128 0D 0A 44 65  TXT_HELLO2 DB "\r\nDebugging with Dezog",0
-33    012C 62 75 67 67
-33    0130 69 6E 67 20
-33    0134 77 69 74 68
-33    0138 20 44 65 7A
-33    013C 6F 67 00
-34    013F
+19    010F              ; ASSERT HL>=TXT_HELLO2 && HL<TXT_END
+20    010F 7E               ld a, (hl)
+21    0110 A7               and a
+22    0111 C8               ret z
+23    0112                  ;
+24    0112 E5               push hl
+25    0113 5F               ld e, a
+26    0114 0E 02            ld c, _CONOUT
+27    0116 CD 05 00         call BDOS
+28    0119 E1               pop hl
+29    011A                  ;
+30    011A 23               inc hl
+31    011B 18 F2            jr PRINT
+32    011D
+33    011D 48 65 6C 6C  TXT_HELLO1 DB "Hello MSX!$"
+33    0121 6F 20 4D 53
+33    0125 58 21 24
+34    0128 0D 0A 44 65  TXT_HELLO2 DB "\r\nDebugging with Dezog",0
+34    012C 62 75 67 67
+34    0130 69 6E 67 20
+34    0134 77 69 74 68
+34    0138 20 44 65 7A
+34    013C 6F 67 00
+35    013F              TXT_END
 # file closed: main.asm
