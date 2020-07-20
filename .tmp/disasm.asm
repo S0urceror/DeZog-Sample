@@ -1,9 +1,7 @@
 L0000:       equ  0000h
-L0938:       equ  0938h
 L0DE8:       equ  0DE8h
-L1021:       equ  1021h
+L0E3F:       equ  0E3Fh
 L1218:       equ  1218h
-L1830:       equ  1830h
 L3433:       equ  3433h
 LD606:       equ  D606h
 LDDA9:       equ  DDA9h
@@ -116,43 +114,47 @@ LDDA9:       equ  DDA9h
 0065 20           defb 20h    
 
 
-             org 0D76h
+             org 0D7Dh
 
 
-0D76 L0D76:
-0D76 16 B7        LD   D,B7h  
-0D78 20 05        JR   NZ,L0D7F 
-0D7A 3A 30 18     LD   A,(L1830) 
+0D7D L0D7D:
 0D7D 3C           INC  A      
 0D7E 12           LD   (DE),A 
-0D7F L0D7F:
 0D7F CD 18 12     CALL L1218  
 0D82 CD A5 0D     CALL L0DA5  
 0D85 13           INC  DE     
 0D86 1A           LD   A,(DE) 
 0D87 1B           DEC  DE     
 0D88 FE 20        CP   20h    
-0D8A D5           PUSH DE     
-0D8B C5           PUSH BC     
-0D8C F5           PUSH AF     
-0D8D 3E 0B        LD   A,0Bh  
-0D8F 90           SUB  B      
-0D90 87           ADD  A,A    
-0D91 87           ADD  A,A    
-0D92 87           ADD  A,A    
-0D93 4F           LD   C,A    
-0D94 06 08        LD   B,08h  
-0D96 F1           POP  AF     
-0D97 L0D97:
-0D97 1F           RRA         
-0D98 C5           PUSH BC     
-0D99 F5           PUSH AF     
-0D9A DC 21 10     CALL C,L1021 
-0D9D F1           POP  AF     
-0D9E C1           POP  BC     
-0D9F 0C           INC  C      
-0DA0 10 F5        DJNZ L0D97  
-0DA2 C3 38 09     JP   L0938  
+0D8A C9           RET         
+
+
+0D8B AF           defb AFh    
+0D8C C9           defb C9h    
+0D8D 11           defb 11h    
+0D8E 85           defb 85h    
+0D8F 15           defb 15h    
+0D90 C3           defb C3h    
+0D91 87           defb 87h    
+0D92 87           defb 87h    
+0D93 4F           defb 4Fh    
+0D94 06           defb 06h    
+0D95 08           defb 08h    
+0D96 F1           defb F1h    
+0D97 1F           defb 1Fh    
+0D98 C5           defb C5h    
+0D99 F5           defb F5h    
+0D9A DC           defb DCh    
+0D9B 21           defb 21h    
+0D9C 10           defb 10h    
+0D9D F1           defb F1h    
+0D9E C1           defb C1h    
+0D9F 0C           defb 0Ch    
+0DA0 10           defb 10h    
+0DA1 F5           defb F5h    
+0DA2 C3           defb C3h    
+0DA3 38           defb 38h    
+0DA4 09           defb 09h    
 
 
 0DA5 L0DA5:
@@ -202,6 +204,11 @@ LDDA9:       equ  DDA9h
 0DD6 L0DD6:
 0DD6 21 40 23     LD   HL,2340h 
 0DD9 24           INC  H      
+0DDA 25           DEC  H      
+0DDB 5E           LD   E,(HL) 
+0DDC 26 2A        LD   H,2Ah  
+0DDE 28 5F        JR   Z,L0E3F 
+0DE0 2B           DEC  HL     
 
 
              org 10D9h
@@ -308,42 +315,6 @@ LDDA9:       equ  DDA9h
 113A 73           defb 73h    
 113B 23           defb 23h    
 113C 72           defb 72h    
-113D 7A           defb 7Ah    
-113E B3           defb B3h    
-113F C0           defb C0h    
-1140 78           defb 78h    
-1141 32           defb 32h    
-1142 3E           defb 3Eh    
-1143 FB           defb FBh    
-1144 CD           defb CDh    
-1145 D8           defb D8h    
-1146 11           defb 11h    
-1147 FE           defb FEh    
-1148 FF           defb FFh    
-1149 28           defb 28h    
-114A 5B           defb 5Bh    
-114B 57           defb 57h    
-114C E6           defb E6h    
-114D E0           defb E0h    
-114E 07           defb 07h    
-114F 07           defb 07h    
-1150 07           defb 07h    
-1151 4F           defb 4Fh    
-1152 7A           defb 7Ah    
-1153 E6           defb E6h    
-1154 1F           defb 1Fh    
-1155 77           defb 77h    
-1156 CD           defb CDh    
-1157 D8           defb D8h    
-1158 11           defb 11h    
-1159 2B           defb 2Bh    
-115A 77           defb 77h    
-115B 0C           defb 0Ch    
-115C 0D           defb 0Dh    
-115D C8           defb C8h    
-115E CD           defb CDh    
-115F D8           defb D8h    
-1160 11           defb 11h    
 
 
              org 2900h
@@ -1046,7 +1017,7 @@ F3D8 1B           defb 1Bh
 F3D9 00           defb 00h    
 F3DA 38           defb 38h    
 F3DB FF           defb FFh    
-F3DC 18           defb 18h    
+F3DC 0A           defb 0Ah    
 F3DD 03           defb 03h    
 F3DE 00           defb 00h    
 F3DF 00           defb 00h    

@@ -11,10 +11,15 @@
             "remoteType": "openmsx",
             "listFiles": [
                 {
-                    "path": "bin/hello.lst",
+                    "path": "bin/hellog.lst",
                     "useFiles": true,
                     "asm": "sjasmplus",
-                    "mainFile": "main.asm"
+                    //"asm": "glass",
+                    "mainFile": "main.asm",
+                    //"pcInSlot": "3 2 3",
+                    // Previous Glass release: "filter": "/^(?<address>[0-9A-F]{4})\\s(?<bytes>(?:(?:[0-9a-f]{2})\\s|\\s){4})(?<mnemonics>.*)//"
+                    // Current Glass release 20-7-2020
+                    "filter": "/^(?<address>[0-9A-F]{4})\\s(?<bytes>(?:(?:[0-9a-f]{2})\\s|\\s{2}\\s){4,})\t(?<mnemonics>.*)//"
                 }
             ],
             //"history": {
@@ -24,12 +29,10 @@
             "startAutomatically": false,
             //"skipInterrupt": true,
             "commandsAfterLaunch": [
-                "-e openmsx_info version"
+                "-e openmsx_info version",
+                "-assert enable"
             ],
             "resetOnLaunch": false,
-            //"disassemblerArgs": {
-            //    "esxdosRst": true
-            //},
             "rootFolder": "${workspaceFolder}",
             //"topOfStack": "stack_top",
             //"load": "z80-sample-program.sna",

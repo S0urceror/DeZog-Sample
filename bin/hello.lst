@@ -7,38 +7,46 @@
  6    0000
  7    0000              ; Our program!
  8    0000                  org 0100h
- 9    0100 11 1D 01         ld de, TXT_HELLO1
-10    0103 0E 09            ld c, _STROUT
-11    0105 CD 05 00         call BDOS
-12    0108 21 28 01         ld hl, TXT_HELLO2
-13    010B CD 0F 01         call PRINT
-14    010E C9               ret
-15    010F
-16    010F              ; PRINT a zero-terminated string in MSX-DOS
-17    010F              ; INPUT: HL points to start of string
-18    010F              PRINT:
-19    010F              ; ASSERT HL>=TXT_HELLO2 && HL<TXT_END
-20    010F 7E               ld a, (hl)
-21    0110 A7               and a
-22    0111 C8               ret z
-23    0112                  ;
-24    0112 E5               push hl
-25    0113 5F               ld e, a
-26    0114 0E 02            ld c, _CONOUT
-27    0116 CD 05 00         call BDOS
-28    0119 E1               pop hl
-29    011A                  ;
-30    011A 23               inc hl
-31    011B 18 F2            jr PRINT
-32    011D
-33    011D 48 65 6C 6C  TXT_HELLO1 DB "Hello MSX!$"
-33    0121 6F 20 4D 53
-33    0125 58 21 24
-34    0128 0D 0A 44 65  TXT_HELLO2 DB "\r\nDebugging with Dezog",0
-34    012C 62 75 67 67
-34    0130 69 6E 67 20
-34    0134 77 69 74 68
-34    0138 20 44 65 7A
-34    013C 6F 67 00
-35    013F              TXT_END
+ 9    0100              START:
+10    0100 11 23 01         ld de, TXT_HELLO1
+11    0103 0E 09            ld c, _STROUT
+12    0105 CD 05 00         call BDOS
+13    0108 21 2E 01         ld hl, TXT_HELLO2
+14    010B CD 15 01         call PRINT
+15    010E                  ; the following should trigger an error
+16    010E 21 45 01         ld hl, TXT_ERROR
+17    0111 CD 15 01         call PRINT
+18    0114 C9               ret
+19    0115
+20    0115              ; PRINT a zero-terminated string in MSX-DOS
+21    0115              ; INPUT: HL points to start of string
+22    0115              PRINT:
+23    0115                  ; ASSERT HL>=TXT_ZERO_TERMINATED_START && HL<TXT_ZERO_TERMINATED_END
+24    0115 7E               ld a, (hl)
+25    0116 A7               and a
+26    0117 C8               ret z
+27    0118                  ;
+28    0118 E5               push hl
+29    0119 5F               ld e, a
+30    011A 0E 02            ld c, _CONOUT
+31    011C CD 05 00         call BDOS
+32    011F E1               pop hl
+33    0120                  ;
+34    0120 23               inc hl
+35    0121 18 F2            jr PRINT
+36    0123
+37    0123 48 65 6C 6C  TXT_HELLO1 DB "Hello MSX!$"
+37    0127 6F 20 4D 53
+37    012B 58 21 24
+38    012E              TXT_ZERO_TERMINATED_START
+39    012E 0D 0A 44 65  TXT_HELLO2 DB "\r\nDebugging with Dezog",0
+39    0132 62 75 67 67
+39    0136 69 6E 67 20
+39    013A 77 69 74 68
+39    013E 20 44 65 7A
+39    0142 6F 67 00
+40    0145              TXT_ZERO_TERMINATED_END
+41    0145
+42    0145 00           TXT_ERROR  DB 0
+43    0146
 # file closed: main.asm
