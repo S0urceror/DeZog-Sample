@@ -1,10 +1,7 @@
 L0000:       equ  0000h
-L0DE8:       equ  0DE8h
-L0E3F:       equ  0E3Fh
-L1218:       equ  1218h
-L3433:       equ  3433h
+L073D:       equ  073Dh
+L0780:       equ  0780h
 LD606:       equ  D606h
-LDDA9:       equ  DDA9h
 
 
              org 0002h
@@ -12,6 +9,9 @@ LDDA9:       equ  DDA9h
 
 0002 L0002:
 0002 DC 00 00     CALL C,L0000 
+
+
+0005 L0005:
 0005 C3 06 D6     JP   LD606  
 
 
@@ -63,12 +63,9 @@ LDDA9:       equ  DDA9h
 0035 00           defb 00h    
 0036 00           defb 00h    
 0037 00           defb 00h    
-
-
-0038 L0038:
-0038 C3 A9 DD     JP   LDDA9  
-
-
+0038 C3           defb C3h    
+0039 A9           defb A9h    
+003A DD           defb DDh    
 003B D3           defb D3h    
 003C A8           defb A8h    
 003D 3A           defb 3Ah    
@@ -114,27 +111,356 @@ LDDA9:       equ  DDA9h
 0065 20           defb 20h    
 
 
-             org 0D7Dh
+             org 0311h
 
 
-0D7D L0D7D:
-0D7D 3C           INC  A      
-0D7E 12           LD   (DE),A 
-0D7F CD 18 12     CALL L1218  
-0D82 CD A5 0D     CALL L0DA5  
-0D85 13           INC  DE     
-0D86 1A           LD   A,(DE) 
-0D87 1B           DEC  DE     
-0D88 FE 20        CP   20h    
-0D8A C9           RET         
+0311 L0311:
+0311 CD           defb CDh    
+0312 17           defb 17h    
+0313 02           defb 02h    
+0314 D9           defb D9h    
+0315 08           defb 08h    
+0316 E1           defb E1h    
+0317 C1           defb C1h    
+0318 D1           defb D1h    
+0319 ED           defb EDh    
+031A 57           defb 57h    
+031B F5           defb F5h    
+031C 78           defb 78h    
+031D E6           defb E6h    
+031E 3F           defb 3Fh    
+031F B1           defb B1h    
+0320 F3           defb F3h    
+0321 D3           defb D3h    
+0322 A8           defb A8h    
+0323 7B           defb 7Bh    
+0324 32           defb 32h    
+0325 FF           defb FFh    
+0326 FF           defb FFh    
+0327 78           defb 78h    
+0328 D3           defb D3h    
+0329 A8           defb A8h    
+032A 73           defb 73h    
+032B F1           defb F1h    
+032C E2           defb E2h    
+032D 30           defb 30h    
+032E 03           defb 03h    
+032F FB           defb FBh    
+0330 08           defb 08h    
+0331 D9           defb D9h    
+0332 C9           defb C9h    
+0333 CD           defb CDh    
+0334 53           defb 53h    
+0335 03           defb 03h    
+0336 FA           defb FAh    
+0337 40           defb 40h    
+0338 03           defb 03h    
+0339 DB           defb DBh    
+033A A8           defb A8h    
+033B A1           defb A1h    
+033C B0           defb B0h    
+033D D3           defb D3h    
+033E A8           defb A8h    
+033F C9           defb C9h    
+0340 E5           defb E5h    
+0341 CD           defb CDh    
+0342 78           defb 78h    
+0343 03           defb 03h    
+0344 4F           defb 4Fh    
+0345 06           defb 06h    
+0346 00           defb 00h    
+0347 7D           defb 7Dh    
+0348 A4           defb A4h    
+0349 B2           defb B2h    
+034A 21           defb 21h    
+034B C5           defb C5h    
+034C FC           defb FCh    
+034D 09           defb 09h    
+034E 77           defb 77h    
+034F E1           defb E1h    
+0350 79           defb 79h    
+0351 18           defb 18h    
+0352 E0           defb E0h    
+0353 F3           defb F3h    
+0354 F5           defb F5h    
+0355 7C           defb 7Ch    
+0356 07           defb 07h    
+0357 07           defb 07h    
+0358 E6           defb E6h    
+0359 03           defb 03h    
+035A 5F           defb 5Fh    
+035B 3E           defb 3Eh    
+035C C0           defb C0h    
+035D 07           defb 07h    
+035E 07           defb 07h    
+035F 1D           defb 1Dh    
+0360 F2           defb F2h    
+0361 5D           defb 5Dh    
+0362 03           defb 03h    
+0363 5F           defb 5Fh    
+0364 2F           defb 2Fh    
+0365 4F           defb 4Fh    
+0366 F1           defb F1h    
+0367 F5           defb F5h    
+0368 E6           defb E6h    
+0369 03           defb 03h    
+036A 3C           defb 3Ch    
+036B 47           defb 47h    
+036C 3E           defb 3Eh    
+036D AB           defb ABh    
+036E C6           defb C6h    
+036F 55           defb 55h    
+0370 10           defb 10h    
+0371 FC           defb FCh    
+0372 57           defb 57h    
+0373 A3           defb A3h    
+0374 47           defb 47h    
 
 
-0D8B AF           defb AFh    
-0D8C C9           defb C9h    
-0D8D 11           defb 11h    
-0D8E 85           defb 85h    
-0D8F 15           defb 15h    
-0D90 C3           defb C3h    
+             org 03BDh
+
+
+03BD L03BD:
+03BD CD           defb CDh    
+03BE 1A           defb 1Ah    
+03BF 7E           defb 7Eh    
+03C0 E5           defb E5h    
+03C1 21           defb 21h    
+03C2 43           defb 43h    
+03C3 44           defb 44h    
+03C4 E7           defb E7h    
+03C5 E1           defb E1h    
+03C6 06           defb 06h    
+03C7 00           defb 00h    
+03C8 20           defb 20h    
+03C9 25           defb 25h    
+03CA CD           defb CDh    
+03CB 1A           defb 1Ah    
+03CC 7E           defb 7Eh    
+03CD E5           defb E5h    
+03CE C5           defb C5h    
+03CF D5           defb D5h    
+03D0 DD           defb DDh    
+03D1 E1           defb E1h    
+03D2 79           defb 79h    
+03D3 F5           defb F5h    
+03D4 FD           defb FDh    
+03D5 E1           defb E1h    
+03D6 C4           defb C4h    
+03D7 17           defb 17h    
+03D8 02           defb 02h    
+03D9 C1           defb C1h    
+03DA E1           defb E1h    
+03DB CD           defb CDh    
+03DC 1A           defb 1Ah    
+03DD 7E           defb 7Eh    
+03DE C6           defb C6h    
+03DF FF           defb FFh    
+03E0 CB           defb CBh    
+03E1 18           defb 18h    
+03E2 CD           defb CDh    
+03E3 1A           defb 1Ah    
+03E4 7E           defb 7Eh    
+03E5 C6           defb C6h    
+03E6 FF           defb FFh    
+03E7 CB           defb CBh    
+03E8 18           defb 18h    
+03E9 CB           defb CBh    
+03EA 38           defb 38h    
+03EB 11           defb 11h    
+03EC F8           defb F8h    
+03ED FF           defb FFh    
+03EE 19           defb 19h    
+03EF E3           defb E3h    
+03F0 70           defb 70h    
+03F1 E3           defb E3h    
+03F2 E1           defb E1h    
+03F3 23           defb 23h    
+03F4 23           defb 23h    
+03F5 23           defb 23h    
+03F6 23           defb 23h    
+03F7 79           defb 79h    
+03F8 A7           defb A7h    
+03F9 11           defb 11h    
+03FA 0C           defb 0Ch    
+03FB 00           defb 00h    
+03FC F2           defb F2h    
+03FD 0A           defb 0Ah    
+03FE 04           defb 04h    
+03FF C6           defb C6h    
+0400 04           defb 04h    
+0401 4F           defb 4Fh    
+0402 FE           defb FEh    
+0403 90           defb 90h    
+0404 38           defb 38h    
+0405 B3           defb B3h    
+0406 E6           defb E6h    
+0407 03           defb 03h    
+0408 4F           defb 4Fh    
+0409 3E           defb 3Eh    
+040A 19           defb 19h    
+040B D1           defb D1h    
+040C 13           defb 13h    
+040D 0C           defb 0Ch    
+040E 79           defb 79h    
+040F FE           defb FEh    
+0410 04           defb 04h    
+0411 38           defb 38h    
+0412 A2           defb A2h    
+0413 C3           defb C3h    
+0414 75           defb 75h    
+0415 7D           defb 7Dh    
+0416 AF           defb AFh    
+0417 D3           defb D3h    
+0418 FF           defb FFh    
+0419 3C           defb 3Ch    
+041A D3           defb D3h    
+041B FE           defb FEh    
+041C 3C           defb 3Ch    
+041D D3           defb D3h    
+041E FD           defb FDh    
+041F 3C           defb 3Ch    
+0420 D3           defb D3h    
+
+
+             org 0B4Eh
+
+
+0B4E L0B4E:
+0B4E 00           NOP         
+0B4F 21 00 06     LD   HL,0600h 
+0B52 0E 27        LD   C,27h  
+0B54 CD 05 00     CALL L0005  
+0B57 7D           LD   A,L    
+0B58 B4           OR   H      
+0B59 28 13        JR   Z,L0B6E 
+0B5B 11 00 01     LD   DE,0100h 
+0B5E 1A           LD   A,(DE) 
+0B5F 13           INC  DE     
+0B60 FE 1A        CP   1Ah    
+0B62 00           NOP         
+0B63 11 18 FC     LD   DE,FC18h 
+0B66 CD 3D 07     CALL L073D  
+0B69 E1           POP  HL     
+0B6A C9           RET         
+
+
+0B6B E5           defb E5h    
+0B6C 0E           defb 0Eh    
+0B6D 08           defb 08h    
+
+
+0B6E L0B6E:
+0B6E 18 08        JR   L0B78  
+
+
+0B70 E5           defb E5h    
+0B71 CD           defb CDh    
+0B72 96           defb 96h    
+0B73 0B           defb 0Bh    
+0B74 3A           defb 3Ah    
+0B75 B0           defb B0h    
+0B76 F3           defb F3h    
+0B77 4F           defb 4Fh    
+
+
+0B78 L0B78:
+0B78 06 00        LD   B,00h  
+0B7A EB           EX   DE,HL  
+0B7B 21 18 FC     LD   HL,FC18h 
+0B7E CD 80 07     CALL L0780  
+0B81 E1           POP  HL     
+0B82 C9           RET         
+
+
+0B83 E5           defb E5h    
+0B84 CD           defb CDh    
+0B85 98           defb 98h    
+0B86 0B           defb 0Bh    
+0B87 CD           defb CDh    
+0B88 E1           defb E1h    
+0B89 07           defb 07h    
+0B8A 4F           defb 4Fh    
+0B8B E1           defb E1h    
+0B8C C9           defb C9h    
+0B8D E5           defb E5h    
+0B8E CD           defb CDh    
+0B8F F1           defb F1h    
+0B90 07           defb 07h    
+0B91 79           defb 79h    
+0B92 D3           defb D3h    
+0B93 98           defb 98h    
+0B94 E1           defb E1h    
+0B95 C9           defb C9h    
+0B96 26           defb 26h    
+0B97 01           defb 01h    
+0B98 C5           defb C5h    
+0B99 25           defb 25h    
+0B9A 2D           defb 2Dh    
+0B9B 5C           defb 5Ch    
+0B9C 26           defb 26h    
+0B9D 00           defb 00h    
+0B9E 54           defb 54h    
+0B9F 29           defb 29h    
+0BA0 29           defb 29h    
+0BA1 29           defb 29h    
+0BA2 4D           defb 4Dh    
+0BA3 44           defb 44h    
+0BA4 29           defb 29h    
+0BA5 29           defb 29h    
+0BA6 3A           defb 3Ah    
+0BA7 AF           defb AFh    
+0BA8 FC           defb FCh    
+0BA9 A7           defb A7h    
+0BAA 3A           defb 3Ah    
+0BAB B0           defb B0h    
+0BAC F3           defb F3h    
+0BAD 28           defb 28h    
+0BAE 04           defb 04h    
+0BAF DE           defb DEh    
+0BB0 22           defb 22h    
+0BB1 18           defb 18h    
+
+
+             org 0D6Eh
+
+
+0D6E L0D6E:
+0D6E CD           defb CDh    
+0D6F 4E           defb 4Eh    
+0D70 0B           defb 0Bh    
+0D71 30           defb 30h    
+0D72 0F           defb 0Fh    
+0D73 3A           defb 3Ah    
+0D74 CD           defb CDh    
+0D75 FB           defb FBh    
+0D76 21           defb 21h    
+0D77 EB           defb EBh    
+0D78 FB           defb FBh    
+0D79 AE           defb AEh    
+0D7A 21           defb 21h    
+0D7B DE           defb DEh    
+0D7C F3           defb F3h    
+0D7D A6           defb A6h    
+0D7E 0F           defb 0Fh    
+0D7F DC           defb DCh    
+0D80 3F           defb 3Fh    
+0D81 0B           defb 0Bh    
+0D82 CD           defb CDh    
+0D83 62           defb 62h    
+0D84 0D           defb 0Dh    
+0D85 C1           defb C1h    
+0D86 D1           defb D1h    
+0D87 E1           defb E1h    
+0D88 C9           defb C9h    
+0D89 E5           defb E5h    
+0D8A D5           defb D5h    
+0D8B C5           defb C5h    
+0D8C F5           defb F5h    
+0D8D 3E           defb 3Eh    
+0D8E 0B           defb 0Bh    
+0D8F 90           defb 90h    
+0D90 87           defb 87h    
 0D91 87           defb 87h    
 0D92 87           defb 87h    
 0D93 4F           defb 4Fh    
@@ -155,60 +481,51 @@ LDDA9:       equ  DDA9h
 0DA2 C3           defb C3h    
 0DA3 38           defb 38h    
 0DA4 09           defb 09h    
-
-
-0DA5 L0DA5:
-0DA5 30 31        JR   NC,L0DD6+2 
-0DA7 32 33 34     LD   (L3433),A 
-0DAA 35           DEC  (HL)   
-0DAB 36 37        LD   (HL),37h 
-0DAD 38 39        JR   C,L0DE8 
-0DAF 2D           DEC  L      
-0DB0 3D           DEC  A      
-0DB1 5C           LD   E,H    
-0DB2 5B           LD   E,E    
-0DB3 5D           LD   E,L    
-0DB4 3B           DEC  SP     
-0DB5 27           DAA         
-0DB6 60           LD   H,B    
-0DB7 2C           INC  L      
-0DB8 2E 2F        LD   L,2Fh  
-0DBA FF           RST  38h    
-0DBB 61           LD   H,C    
-0DBC 62           LD   H,D    
-0DBD 63           LD   H,E    
-0DBE 64           LD   H,H    
-0DBF 65           LD   H,L    
-0DC0 66           LD   H,(HL) 
-0DC1 67           LD   H,A    
-0DC2 68           LD   L,B    
-0DC3 69           LD   L,C    
-0DC4 6A           LD   L,D    
-0DC5 6B           LD   L,E    
-0DC6 6C           LD   L,H    
-0DC7 6D           LD   L,L    
-0DC8 6E           LD   L,(HL) 
-0DC9 6F           LD   L,A    
-0DCA 70           LD   (HL),B 
-0DCB 71           LD   (HL),C 
-0DCC 72           LD   (HL),D 
-0DCD 73           LD   (HL),E 
-0DCE 74           LD   (HL),H 
-0DCF 75           LD   (HL),L 
-0DD0 76           HALT        
-0DD1 77           LD   (HL),A 
-0DD2 78           LD   A,B    
-0DD3 79           LD   A,C    
-0DD4 7A           LD   A,D    
-0DD5 29           ADD  HL,HL  
-0DD6 L0DD6:
-0DD6 21 40 23     LD   HL,2340h 
-0DD9 24           INC  H      
-0DDA 25           DEC  H      
-0DDB 5E           LD   E,(HL) 
-0DDC 26 2A        LD   H,2Ah  
-0DDE 28 5F        JR   Z,L0E3F 
-0DE0 2B           DEC  HL     
+0DA5 30           defb 30h    
+0DA6 31           defb 31h    
+0DA7 32           defb 32h    
+0DA8 33           defb 33h    
+0DA9 34           defb 34h    
+0DAA 35           defb 35h    
+0DAB 36           defb 36h    
+0DAC 37           defb 37h    
+0DAD 38           defb 38h    
+0DAE 39           defb 39h    
+0DAF 2D           defb 2Dh    
+0DB0 3D           defb 3Dh    
+0DB1 5C           defb 5Ch    
+0DB2 5B           defb 5Bh    
+0DB3 5D           defb 5Dh    
+0DB4 3B           defb 3Bh    
+0DB5 27           defb 27h    
+0DB6 60           defb 60h    
+0DB7 2C           defb 2Ch    
+0DB8 2E           defb 2Eh    
+0DB9 2F           defb 2Fh    
+0DBA FF           defb FFh    
+0DBB 61           defb 61h    
+0DBC 62           defb 62h    
+0DBD 63           defb 63h    
+0DBE 64           defb 64h    
+0DBF 65           defb 65h    
+0DC0 66           defb 66h    
+0DC1 67           defb 67h    
+0DC2 68           defb 68h    
+0DC3 69           defb 69h    
+0DC4 6A           defb 6Ah    
+0DC5 6B           defb 6Bh    
+0DC6 6C           defb 6Ch    
+0DC7 6D           defb 6Dh    
+0DC8 6E           defb 6Eh    
+0DC9 6F           defb 6Fh    
+0DCA 70           defb 70h    
+0DCB 71           defb 71h    
+0DCC 72           defb 72h    
+0DCD 73           defb 73h    
+0DCE 74           defb 74h    
+0DCF 75           defb 75h    
+0DD0 76           defb 76h    
+0DD1 77           defb 77h    
 
 
              org 10D9h
@@ -317,623 +634,323 @@ LDDA9:       equ  DDA9h
 113C 72           defb 72h    
 
 
-             org 2900h
+             org 1217h
 
 
-2900 L2900:
-2900 F4           defb F4h    
-2901 F7           defb F7h    
-2902 0E           defb 0Eh    
-2903 FF           defb FFh    
-2904 0C           defb 0Ch    
-2905 47           defb 47h    
-2906 E5           defb E5h    
-2907 D5           defb D5h    
-2908 AF           defb AFh    
-2909 EB           defb EBh    
-290A 1A           defb 1Ah    
-290B 9E           defb 9Eh    
-290C 27           defb 27h    
-290D 12           defb 12h    
-290E 2B           defb 2Bh    
-290F 1B           defb 1Bh    
-2910 10           defb 10h    
-2911 F8           defb F8h    
-2912 1A           defb 1Ah    
-2913 98           defb 98h    
-2914 12           defb 12h    
-2915 D1           defb D1h    
-2916 E1           defb E1h    
-2917 3A           defb 3Ah    
-2918 F4           defb F4h    
-2919 F7           defb F7h    
-291A 30           defb 30h    
-291B E8           defb E8h    
-291C 47           defb 47h    
-291D EB           defb EBh    
-291E CD           defb CDh    
-291F 61           defb 61h    
-2920 27           defb 27h    
-2921 30           defb 30h    
-2922 02           defb 02h    
-2923 EB           defb EBh    
-2924 34           defb 34h    
-2925 79           defb 79h    
-2926 C1           defb C1h    
-2927 4F           defb 4Fh    
-2928 C5           defb C5h    
-2929 CB           defb CBh    
-292A 38           defb 38h    
-292B 04           defb 04h    
-292C 58           defb 58h    
-292D 16           defb 16h    
-292E 00           defb 00h    
-292F 21           defb 21h    
-2930 F5           defb F5h    
-2931 F7           defb F7h    
-2932 19           defb 19h    
-2933 CD           defb CDh    
-2934 9A           defb 9Ah    
-2935 27           defb 27h    
-2936 C1           defb C1h    
-2937 E1           defb E1h    
-2938 78           defb 78h    
-2939 0C           defb 0Ch    
-293A 0D           defb 0Dh    
-293B 20           defb 20h    
-293C 36           defb 36h    
-293D FE           defb FEh    
-293E 0F           defb 0Fh    
-293F 28           defb 28h    
-2940 23           defb 23h    
-2941 0F           defb 0Fh    
-2942 07           defb 07h    
-2943 30           defb 30h    
-2944 2E           defb 2Eh    
-2945 C5           defb C5h    
-2946 E5           defb E5h    
-2947 21           defb 21h    
-2948 F6           defb F6h    
-2949 F7           defb F7h    
-294A 06           defb 06h    
-294B 08           defb 08h    
-294C AF           defb AFh    
-294D BE           defb BEh    
-294E 20           defb 20h    
-294F 0F           defb 0Fh    
-2950 23           defb 23h    
-2951 10           defb 10h    
-2952 FA           defb FAh    
-2953 E1           defb E1h    
-2954 C1           defb C1h    
-2955 CB           defb CBh    
-2956 38           defb 38h    
-2957 04           defb 04h    
-2958 AF           defb AFh    
-2959 77           defb 77h    
-295A 23           defb 23h    
-295B 10           defb 10h    
-295C FC           defb FCh    
-295D 18           defb 18h    
-295E 26           defb 26h    
-295F E1           defb E1h    
-2960 C1           defb C1h    
-2961 78           defb 78h    
-2962 18           defb 18h    
-2963 0F           defb 0Fh    
+1217 L1217:
+1217 CD           defb CDh    
+1218 0C           defb 0Ch    
+1219 11           defb 11h    
+121A FB           defb FBh    
+121B C9           defb C9h    
+121C F3           defb F3h    
+121D DB           defb DBh    
+121E AA           defb AAh    
+121F E6           defb E6h    
+1220 F0           defb F0h    
+1221 C6           defb C6h    
+1222 08           defb 08h    
+1223 D3           defb D3h    
+1224 AA           defb AAh    
+1225 DB           defb DBh    
+1226 A9           defb A9h    
+1227 FB           defb FBh    
+1228 C9           defb C9h    
+1229 00           defb 00h    
+122A 05           defb 05h    
+122B 01           defb 01h    
+122C 00           defb 00h    
+122D 03           defb 03h    
+122E 04           defb 04h    
+122F 02           defb 02h    
+1230 03           defb 03h    
+1231 07           defb 07h    
+1232 06           defb 06h    
+1233 08           defb 08h    
+1234 07           defb 07h    
+1235 00           defb 00h    
+1236 05           defb 05h    
+1237 01           defb 01h    
+1238 00           defb 00h    
+1239 00           defb 00h    
+123A 03           defb 03h    
+123B 05           defb 05h    
+123C 04           defb 04h    
+123D 01           defb 01h    
+123E 02           defb 02h    
+123F 00           defb 00h    
+1240 03           defb 03h    
+1241 07           defb 07h    
+1242 00           defb 00h    
+1243 06           defb 06h    
+1244 05           defb 05h    
+1245 08           defb 08h    
+1246 01           defb 01h    
+1247 07           defb 07h    
+1248 00           defb 00h    
+1249 3D           defb 3Dh    
+124A FA           defb FAh    
+124B 62           defb 62h    
+124C 12           defb 12h    
+124D F5           defb F5h    
+124E E6           defb E6h    
+124F 01           defb 01h    
+1250 CD           defb CDh    
+1251 02           defb 02h    
+1252 12           defb 12h    
+1253 C1           defb C1h    
+1254 05           defb 05h    
+1255 05           defb 05h    
+1256 06           defb 06h    
+1257 10           defb 10h    
+1258 FA           defb FAh    
+1259 5D           defb 5Dh    
+125A 12           defb 12h    
+125B 06           defb 06h    
+125C 20           defb 20h    
+125D A0           defb A0h    
+125E D6           defb D6h    
+125F 01           defb 01h    
+1260 9F           defb 9Fh    
+1261 C9           defb C9h    
+1262 CD           defb CDh    
+1263 1C           defb 1Ch    
+1264 12           defb 12h    
+1265 E6           defb E6h    
+1266 01           defb 01h    
+1267 18           defb 18h    
+1268 F5           defb F5h    
+1269 3C           defb 3Ch    
+126A A7           defb A7h    
+126B 1F           defb 1Fh    
+126C F5           defb F5h    
+126D 47           defb 47h    
+126E AF           defb AFh    
+126F 37           defb 37h    
+1270 17           defb 17h    
+1271 10           defb 10h    
+1272 FD           defb FDh    
+1273 47           defb 47h    
+1274 F1           defb F1h    
+1275 0E           defb 0Eh    
+1276 10           defb 10h    
+1277 11           defb 11h    
+1278 AF           defb AFh    
+1279 03           defb 03h    
+127A 30           defb 30h    
 
 
-             org 31F0h
+             org 23E7h
 
 
-31F0 L31F0:
-31F0 CD           defb CDh    
-31F1 21           defb 21h    
-31F2 32           defb 32h    
-31F3 44           defb 44h    
-31F4 4D           defb 4Dh    
-31F5 21           defb 21h    
-31F6 00           defb 00h    
-31F7 00           defb 00h    
-31F8 3E           defb 3Eh    
-31F9 11           defb 11h    
-31FA B7           defb B7h    
-31FB 18           defb 18h    
-31FC 09           defb 09h    
-31FD E5           defb E5h    
-31FE 09           defb 09h    
-31FF 30           defb 30h    
-3200 04           defb 04h    
-3201 33           defb 33h    
-3202 33           defb 33h    
-3203 37           defb 37h    
-3204 30           defb 30h    
-3205 E1           defb E1h    
-3206 CB           defb CBh    
-3207 13           defb 13h    
-3208 CB           defb CBh    
-3209 12           defb 12h    
-320A ED           defb EDh    
-320B 6A           defb 6Ah    
-320C 3D           defb 3Dh    
-320D 20           defb 20h    
-320E EE           defb EEh    
-320F EB           defb EBh    
-3210 C1           defb C1h    
-3211 D5           defb D5h    
-3212 C3           defb C3h    
-3213 B5           defb B5h    
-3214 31           defb 31h    
-3215 7C           defb 7Ch    
-3216 AA           defb AAh    
-3217 47           defb 47h    
-3218 CD           defb CDh    
-3219 1C           defb 1Ch    
-321A 32           defb 32h    
-321B EB           defb EBh    
-321C 7C           defb 7Ch    
-321D B7           defb B7h    
-321E F2           defb F2h    
-321F 99           defb 99h    
-3220 2F           defb 2Fh    
-3221 AF           defb AFh    
-3222 4F           defb 4Fh    
-3223 95           defb 95h    
-3224 6F           defb 6Fh    
-3225 79           defb 79h    
-3226 9C           defb 9Ch    
-3227 67           defb 67h    
-3228 C3           defb C3h    
-3229 99           defb 99h    
-322A 2F           defb 2Fh    
-322B 2A           defb 2Ah    
-322C F8           defb F8h    
-322D F7           defb F7h    
-322E CD           defb CDh    
-322F 21           defb 21h    
-3230 32           defb 32h    
-3231 7C           defb 7Ch    
-3232 EE           defb EEh    
-3233 80           defb 80h    
-3234 B5           defb B5h    
-3235 C0           defb C0h    
-3236 AF           defb AFh    
-3237 C3           defb C3h    
-3238 CC           defb CCh    
-3239 2F           defb 2Fh    
-323A D5           defb D5h    
-323B CD           defb CDh    
-323C E6           defb E6h    
-323D 31           defb 31h    
-323E AF           defb AFh    
-323F 82           defb 82h    
-3240 1F           defb 1Fh    
-3241 67           defb 67h    
-3242 7B           defb 7Bh    
-3243 1F           defb 1Fh    
-3244 6F           defb 6Fh    
-3245 CD           defb CDh    
-3246 9C           defb 9Ch    
-3247 2F           defb 2Fh    
-3248 F1           defb F1h    
-3249 18           defb 18h    
-324A D2           defb D2h    
-324B CD           defb CDh    
-324C DF           defb DFh    
-324D 2E           defb 2Eh    
-324E CD           defb CDh    
-324F 80           defb 80h    
-3250 32           defb 32h    
-3251 CD           defb CDh    
-3252 42           defb 42h    
-3253 30           defb 30h    
+23E7 L23E7:
+23E7 CD           defb CDh    
+23E8 CB           defb CBh    
+23E9 10           defb 10h    
+23EA 21           defb 21h    
+23EB 37           defb 37h    
+23EC 24           defb 24h    
+23ED 0E           defb 0Eh    
+23EE 0B           defb 0Bh    
+23EF CD           defb CDh    
+23F0 76           defb 76h    
+23F1 09           defb 09h    
+23F2 F5           defb F5h    
+23F3 C4           defb C4h    
+23F4 FF           defb FFh    
+23F5 23           defb 23h    
+23F6 F1           defb F1h    
+23F7 30           defb 30h    
+23F8 EE           defb EEh    
+23F9 21           defb 21h    
+23FA 5D           defb 5Dh    
+23FB F5           defb F5h    
+23FC C8           defb C8h    
+23FD 3F           defb 3Fh    
+23FE C9           defb C9h    
+23FF F5           defb F5h    
+2400 FE           defb FEh    
+2401 09           defb 09h    
+2402 20           defb 20h    
+2403 0F           defb 0Fh    
+2404 F1           defb F1h    
+2405 3E           defb 3Eh    
+2406 20           defb 20h    
+2407 CD           defb CDh    
+2408 FF           defb FFh    
+2409 23           defb 23h    
+240A 3A           defb 3Ah    
+240B DD           defb DDh    
+240C F3           defb F3h    
+240D 3D           defb 3Dh    
+240E E6           defb E6h    
+240F 07           defb 07h    
+2410 20           defb 20h    
+2411 F3           defb F3h    
+2412 C9           defb C9h    
+2413 F1           defb F1h    
+2414 21           defb 21h    
+2415 A8           defb A8h    
+2416 FC           defb FCh    
+2417 FE           defb FEh    
+2418 01           defb 01h    
+2419 28           defb 28h    
+241A 0B           defb 0Bh    
+241B FE           defb FEh    
+241C 20           defb 20h    
+241D 38           defb 38h    
+241E 09           defb 09h    
+241F F5           defb F5h    
+2420 7E           defb 7Eh    
+2421 A7           defb A7h    
+2422 C4           defb C4h    
+2423 F2           defb F2h    
+2424 24           defb 24h    
+2425 F1           defb F1h    
+2426 DF           defb DFh    
+2427 C9           defb C9h    
+2428 36           defb 36h    
+2429 00           defb 00h    
+242A DF           defb DFh    
+242B 3E           defb 3Eh    
+242C 3E           defb 3Eh    
+242D AF           defb AFh    
+242E F5           defb F5h    
+242F CD           defb CDh    
+2430 8B           defb 8Bh    
+2431 0A           defb 0Ah    
+2432 F1           defb F1h    
+2433 32           defb 32h    
+2434 AA           defb AAh    
+2435 FC           defb FCh    
+2436 C3           defb C3h    
+2437 3E           defb 3Eh    
+2438 0A           defb 0Ah    
+2439 08           defb 08h    
+243A 61           defb 61h    
+243B 25           defb 25h    
+243C 12           defb 12h    
+243D E5           defb E5h    
+243E 24           defb 24h    
+243F 1B           defb 1Bh    
+2440 FE           defb FEh    
+2441 23           defb 23h    
+2442 02           defb 02h    
+2443 0E           defb 0Eh    
+2444 26           defb 26h    
+2445 06           defb 06h    
+2446 F8           defb F8h    
+2447 25           defb 25h    
+2448 0E           defb 0Eh    
+2449 D7           defb D7h    
+244A 25           defb 25h    
 
 
-             org 4089h
+             org 4164h
 
 
-4089 L4089:
-4089 CD           defb CDh    
-408A AB           defb ABh    
-408B 40           defb 40h    
-408C DD           defb DDh    
-408D E1           defb E1h    
-408E C9           defb C9h    
-408F DD           defb DDh    
-4090 E5           defb E5h    
-4091 DD           defb DDh    
-4092 21           defb 21h    
-4093 A2           defb A2h    
-4094 00           defb 00h    
-4095 CD           defb CDh    
-4096 AB           defb ABh    
-4097 40           defb 40h    
-4098 DD           defb DDh    
-4099 E1           defb E1h    
-409A C9           defb C9h    
-409B DD           defb DDh    
-409C E5           defb E5h    
-409D DD           defb DDh    
-409E 21           defb 21h    
-409F A5           defb A5h    
-40A0 00           defb 00h    
-40A1 CD           defb CDh    
-40A2 AB           defb ABh    
-40A3 40           defb 40h    
-40A4 DD           defb DDh    
-40A5 E1           defb E1h    
-40A6 C9           defb C9h    
-40A7 DD           defb DDh    
-40A8 21           defb 21h    
-40A9 9B           defb 9Bh    
-40AA 40           defb 40h    
-40AB FD           defb FDh    
-40AC E5           defb E5h    
-40AD FD           defb FDh    
-40AE 2A           defb 2Ah    
-40AF C0           defb C0h    
-40B0 FC           defb FCh    
-40B1 CD           defb CDh    
-40B2 1C           defb 1Ch    
-40B3 00           defb 00h    
-40B4 FB           defb FBh    
-40B5 FD           defb FDh    
-40B6 E1           defb E1h    
-40B7 C9           defb C9h    
-40B8 3E           defb 3Eh    
-40B9 0D           defb 0Dh    
-40BA D3           defb D3h    
-40BB B4           defb B4h    
-40BC 3E           defb 3Eh    
-40BD 0A           defb 0Ah    
-40BE D3           defb D3h    
-40BF B5           defb B5h    
-40C0 AF           defb AFh    
-40C1 D3           defb D3h    
-40C2 B4           defb B4h    
-40C3 06           defb 06h    
-40C4 0F           defb 0Fh    
-40C5 DB           defb DBh    
-40C6 B5           defb B5h    
-40C7 E6           defb E6h    
-40C8 0F           defb 0Fh    
-40C9 A8           defb A8h    
-40CA D3           defb D3h    
-40CB B5           defb B5h    
-40CC 4F           defb 4Fh    
-40CD 00           defb 00h    
-40CE DB           defb DBh    
-40CF B5           defb B5h    
-40D0 E6           defb E6h    
-40D1 0F           defb 0Fh    
-40D2 B9           defb B9h    
-40D3 C0           defb C0h    
-40D4 A8           defb A8h    
-40D5 D3           defb D3h    
-40D6 B5           defb B5h    
-40D7 10           defb 10h    
-40D8 EC           defb ECh    
-40D9 3E           defb 3Eh    
-40DA FF           defb FFh    
-40DB 32           defb 32h    
-40DC 38           defb 38h    
-40DD F3           defb F3h    
-40DE 3E           defb 3Eh    
-40DF 0D           defb 0Dh    
-40E0 D3           defb D3h    
-40E1 B4           defb B4h    
-40E2 3E           defb 3Eh    
-40E3 09           defb 09h    
-40E4 D3           defb D3h    
-40E5 B5           defb B5h    
-40E6 3E           defb 3Eh    
-40E7 0A           defb 0Ah    
-40E8 D3           defb D3h    
-40E9 B4           defb B4h    
-40EA 3E           defb 3Eh    
-40EB 01           defb 01h    
-40EC D3           defb D3h    
-40ED B5           defb B5h    
-40EE 3E           defb 3Eh    
-40EF 0D           defb 0Dh    
-40F0 D3           defb D3h    
-40F1 B4           defb B4h    
-40F2 AF           defb AFh    
-40F3 D3           defb D3h    
-40F4 B5           defb B5h    
-40F5 01           defb 01h    
-40F6 00           defb 00h    
-40F7 0D           defb 0Dh    
-40F8 79           defb 79h    
-40F9 D3           defb D3h    
-40FA B4           defb B4h    
-40FB DB           defb DBh    
-40FC B5           defb B5h    
-40FD F5           defb F5h    
-40FE 0C           defb 0Ch    
-40FF 10           defb 10h    
-4100 F7           defb F7h    
-4101 3E           defb 3Eh    
-4102 0E           defb 0Eh    
-4103 D3           defb D3h    
-4104 B4           defb B4h    
-4105 AF           defb AFh    
-4106 D3           defb D3h    
-4107 B5           defb B5h    
-4108 06           defb 06h    
-4109 0D           defb 0Dh    
-410A 0D           defb 0Dh    
-410B 79           defb 79h    
-410C D3           defb D3h    
-410D B4           defb B4h    
-410E F1           defb F1h    
-410F D3           defb D3h    
-4110 B5           defb B5h    
-4111 10           defb 10h    
-4112 F7           defb F7h    
-4113 18           defb 18h    
-4114 39           defb 39h    
-
-
-             org 5107h
-
-
-5107 L5107:
-5107 CD           defb CDh    
-5108 4E           defb 4Eh    
-5109 54           defb 54h    
-510A E5           defb E5h    
-510B C5           defb C5h    
-510C 21           defb 21h    
-510D 74           defb 74h    
-510E 53           defb 53h    
-510F 01           defb 01h    
-5110 11           defb 11h    
-5111 00           defb 00h    
-5112 ED           defb EDh    
-5113 B1           defb B1h    
-5114 09           defb 09h    
-5115 09           defb 09h    
-5116 09           defb 09h    
-5117 4E           defb 4Eh    
-5118 23           defb 23h    
-5119 66           defb 66h    
-511A 69           defb 69h    
-511B C1           defb C1h    
-511C E3           defb E3h    
-511D C9           defb C9h    
-511E CD           defb CDh    
-511F 4E           defb 4Eh    
-5120 54           defb 54h    
-5121 FE           defb FEh    
-5122 40           defb 40h    
-5123 38           defb 38h    
-5124 E5           defb E5h    
-5125 FE           defb FEh    
-5126 60           defb 60h    
-5127 30           defb 30h    
-5128 E1           defb E1h    
-5129 F5           defb F5h    
-512A 78           defb 78h    
-512B 3C           defb 3Ch    
-512C B9           defb B9h    
-512D 30           defb 30h    
-512E 2F           defb 2Fh    
-512F 3E           defb 3Eh    
-5130 01           defb 01h    
-5131 DD           defb DDh    
-5132 77           defb 77h    
-5133 00           defb 00h    
-5134 DD           defb DDh    
-5135 23           defb 23h    
-5136 04           defb 04h    
-5137 CD           defb CDh    
-5138 5D           defb 5Dh    
-5139 53           defb 53h    
-513A F1           defb F1h    
-513B F5           defb F5h    
-513C 78           defb 78h    
-513D B9           defb B9h    
-513E 30           defb 30h    
-513F 1E           defb 1Eh    
-5140 F1           defb F1h    
-5141 DD           defb DDh    
-5142 77           defb 77h    
-5143 00           defb 00h    
-5144 DD           defb DDh    
-5145 23           defb 23h    
-5146 04           defb 04h    
-5147 CD           defb CDh    
-5148 5D           defb 5Dh    
-5149 53           defb 53h    
-514A 3A           defb 3Ah    
-514B 39           defb 39h    
-514C F2           defb F2h    
-514D B7           defb B7h    
-514E 20           defb 20h    
-514F B4           defb B4h    
-5150 14           defb 14h    
-5151 7B           defb 7Bh    
-5152 BA           defb BAh    
-5153 38           defb 38h    
-5154 AF           defb AFh    
-5155 7E           defb 7Eh    
-5156 3D           defb 3Dh    
-5157 23           defb 23h    
-5158 20           defb 20h    
-5159 AA           defb AAh    
-515A 14           defb 14h    
-515B 23           defb 23h    
-515C 18           defb 18h    
-515D A6           defb A6h    
-515E F1           defb F1h    
-515F 3E           defb 3Eh    
-5160 07           defb 07h    
-5161 CD           defb CDh    
-5162 A8           defb A8h    
-5163 53           defb 53h    
-5164 18           defb 18h    
-5165 9E           defb 9Eh    
-5166 D1           defb D1h    
-5167 3A           defb 3Ah    
-5168 38           defb 38h    
-5169 F2           defb F2h    
-516A 47           defb 47h    
-
-
-             org 541Dh
-
-
-541D L541D:
-541D CD           defb CDh    
-541E 78           defb 78h    
-541F 40           defb 40h    
-5420 FE           defb FEh    
-5421 10           defb 10h    
-5422 28           defb 28h    
-5423 0D           defb 0Dh    
-5424 FE           defb FEh    
-5425 0E           defb 0Eh    
-5426 28           defb 28h    
-5427 0F           defb 0Fh    
-5428 FE           defb FEh    
-5429 03           defb 03h    
-542A C0           defb C0h    
-542B 2A           defb 2Ah    
-542C 25           defb 25h    
-542D F3           defb F3h    
-542E C3           defb C3h    
-542F E8           defb E8h    
-5430 F1           defb F1h    
-5431 3E           defb 3Eh    
-5432 01           defb 01h    
-5433 32           defb 32h    
-5434 3B           defb 3Bh    
-5435 F2           defb F2h    
-5436 C9           defb C9h    
-5437 AF           defb AFh    
-5438 32           defb 32h    
-5439 3B           defb 3Bh    
-543A F2           defb F2h    
-543B C9           defb C9h    
-543C CD           defb CDh    
-543D 12           defb 12h    
-543E 54           defb 54h    
-543F 3E           defb 3Eh    
-5440 00           defb 00h    
-5441 C8           defb C8h    
-5442 F6           defb F6h    
-5443 FF           defb FFh    
-5444 C9           defb C9h    
-5445 CD           defb CDh    
-5446 4E           defb 4Eh    
-5447 54           defb 54h    
-5448 F5           defb F5h    
-5449 CD           defb CDh    
-544A A8           defb A8h    
-544B 53           defb 53h    
-544C F1           defb F1h    
-544D C9           defb C9h    
-544E CD           defb CDh    
-544F 1D           defb 1Dh    
-5450 54           defb 54h    
-5451 28           defb 28h    
-5452 FB           defb FBh    
-5453 C9           defb C9h    
-5454 7B           defb 7Bh    
-5455 FE           defb FEh    
-5456 FF           defb FFh    
-5457 C2           defb C2h    
-5458 8F           defb 8Fh    
-5459 40           defb 40h    
-545A CD           defb CDh    
-545B 34           defb 34h    
-545C 40           defb 40h    
-545D C2           defb C2h    
-545E 78           defb 78h    
-545F 40           defb 40h    
-5460 AF           defb AFh    
-5461 C9           defb C9h    
-5462 C3           defb C3h    
-5463 78           defb 78h    
-5464 40           defb 40h    
-5465 7B           defb 7Bh    
-5466 F5           defb F5h    
-5467 CD           defb CDh    
-5468 12           defb 12h    
-5469 54           defb 54h    
-546A F1           defb F1h    
-546B C3           defb C3h    
-546C 9B           defb 9Bh    
-546D 40           defb 40h    
-546E CD           defb CDh    
-546F 12           defb 12h    
-5470 54           defb 54h    
-5471 C3           defb C3h    
-5472 71           defb 71h    
-5473 F3           defb F3h    
-5474 7B           defb 7Bh    
-5475 F5           defb F5h    
-5476 CD           defb CDh    
-5477 12           defb 12h    
-5478 54           defb 54h    
-5479 F1           defb F1h    
-547A C3           defb C3h    
-547B 74           defb 74h    
-547C F3           defb F3h    
-547D ED           defb EDh    
-547E 8C           defb 8Ch    
-547F 93           defb 93h    
-5480 EF           defb EFh    
-5481 0C           defb 0Ch    
-5482 88           defb 88h    
-5483 39           defb 39h    
-5484 40           defb 40h    
-5485 03           defb 03h    
-5486 70           defb 70h    
-5487 48           defb 48h    
-5488 97           defb 97h    
-5489 F2           defb F2h    
-548A FC           defb FCh    
-548B BA           defb BAh    
-548C 80           defb 80h    
-548D 0A           defb 0Ah    
-548E CC           defb CCh    
-548F B5           defb B5h    
-5490 5E           defb 5Eh    
-5491 AF           defb AFh    
-5492 29           defb 29h    
-5493 00           defb 00h    
-5494 00           defb 00h    
-5495 C9           defb C9h    
-5496 CD           defb CDh    
-5497 B2           defb B2h    
-5498 F2           defb F2h    
-5499 CD           defb CDh    
-549A C0           defb C0h    
-549B 54           defb 54h    
-549C 79           defb 79h    
-549D 87           defb 87h    
-549E 87           defb 87h    
-549F 87           defb 87h    
-54A0 CB           defb CBh    
-54A1 10           defb 10h    
-54A2 87           defb 87h    
-54A3 CB           defb CBh    
-54A4 10           defb 10h    
-54A5 87           defb 87h    
-54A6 CB           defb CBh    
-54A7 10           defb 10h    
-54A8 CB           defb CBh    
-54A9 3A           defb 3Ah    
-54AA B2           defb B2h    
-54AB 5F           defb 5Fh    
-54AC 50           defb 50h    
-54AD ED           defb EDh    
-54AE 4B           defb 4Bh    
-54AF 49           defb 49h    
-54B0 F2           defb F2h    
-54B1 79           defb 79h    
+4164 L4164:
+4164 CD           defb CDh    
+4165 AE           defb AEh    
+4166 00           defb 00h    
+4167 30           defb 30h    
+4168 0A           defb 0Ah    
+4169 AF           defb AFh    
+416A 32           defb 32h    
+416B AA           defb AAh    
+416C F6           defb F6h    
+416D C3           defb C3h    
+416E 34           defb 34h    
+416F 41           defb 41h    
+4170 CD           defb CDh    
+4171 74           defb 74h    
+4172 73           defb 73h    
+4173 D7           defb D7h    
+4174 3C           defb 3Ch    
+4175 3D           defb 3Dh    
+4176 28           defb 28h    
+4177 BC           defb BCh    
+4178 F5           defb F5h    
+4179 CD           defb CDh    
+417A 69           defb 69h    
+417B 47           defb 47h    
+417C 30           defb 30h    
+417D 06           defb 06h    
+417E CD           defb CDh    
+417F 4A           defb 4Ah    
+4180 01           defb 01h    
+4181 CA           defb CAh    
+4182 55           defb 55h    
+4183 40           defb 40h    
+4184 CD           defb CDh    
+4185 14           defb 14h    
+4186 45           defb 45h    
+4187 3A           defb 3Ah    
+4188 AA           defb AAh    
+4189 F6           defb F6h    
+418A B7           defb B7h    
+418B 28           defb 28h    
+418C 08           defb 08h    
+418D FE           defb FEh    
+418E 2A           defb 2Ah    
+418F 20           defb 20h    
+4190 04           defb 04h    
+4191 BE           defb BEh    
+4192 20           defb 20h    
+4193 01           defb 01h    
+4194 23           defb 23h    
+4195 7A           defb 7Ah    
+4196 B3           defb B3h    
+4197 28           defb 28h    
+4198 06           defb 06h    
+4199 7E           defb 7Eh    
+419A FE           defb FEh    
+419B 20           defb 20h    
+419C 20           defb 20h    
+419D 01           defb 01h    
+419E 23           defb 23h    
+419F D5           defb D5h    
+41A0 CD           defb CDh    
+41A1 B2           defb B2h    
+41A2 42           defb 42h    
+41A3 D1           defb D1h    
+41A4 F1           defb F1h    
+41A5 22           defb 22h    
+41A6 AF           defb AFh    
+41A7 F6           defb F6h    
+41A8 CD           defb CDh    
+41A9 11           defb 11h    
+41AA FF           defb FFh    
+41AB 38           defb 38h    
+41AC 07           defb 07h    
+41AD AF           defb AFh    
+41AE 32           defb 32h    
+41AF AA           defb AAh    
+41B0 F6           defb F6h    
+41B1 C3           defb C3h    
+41B2 48           defb 48h    
+41B3 6D           defb 6Dh    
+41B4 D5           defb D5h    
+41B5 C5           defb C5h    
+41B6 D7           defb D7h    
+41B7 B7           defb B7h    
+41B8 F5           defb F5h    
+41B9 3A           defb 3Ah    
+41BA AA           defb AAh    
+41BB F6           defb F6h    
+41BC A7           defb A7h    
+41BD 28           defb 28h    
+41BE 03           defb 03h    
+41BF F1           defb F1h    
+41C0 37           defb 37h    
+41C1 F5           defb F5h    
+41C2 ED           defb EDh    
+41C3 53           defb 53h    
+41C4 B5           defb B5h    
+41C5 F6           defb F6h    
+41C6 2A           defb 2Ah    
+41C7 AD           defb ADh    
+41C8 00           defb 00h    
 
 
              org F38Fh
@@ -1017,9 +1034,9 @@ F3D8 1B           defb 1Bh
 F3D9 00           defb 00h    
 F3DA 38           defb 38h    
 F3DB FF           defb FFh    
-F3DC 0A           defb 0Ah    
-F3DD 03           defb 03h    
-F3DE 00           defb 00h    
+F3DC 06           defb 06h    
+F3DD 01           defb 01h    
+F3DE FF           defb FFh    
 F3DF 00           defb 00h    
 F3E0 70           defb 70h    
 F3E1 00           defb 00h    

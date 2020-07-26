@@ -1,0 +1,50 @@
+# source: main-include.asm
+    1 0000             	; MSX-DOS function codes
+    2 0000             	_STROUT equ 09h
+    3 0000             	_CONOUT equ 02h
+    4 0000             	; MSX-DOS entry point
+    5 0000             	BDOS equ 0005h
+    6 0000             	
+    7 0000             	; Our program!
+    8 0000             	    org 0100h
+    9 0100             	START:
+   10 0100 11 3A 01    	    ld de, TXT_HELLO1
+   11 0103 0E 09       	    ld c, _STROUT
+   12 0105 CD 05 00    	    call BDOS
+   13 0108 21 23 01    	    ld hl, TXT_HELLO2
+   14 010B CD 15 01    	    call PRINT
+   15 010E             	    ; the following should trigger an error
+   16 010E 21 45 01    	    ld hl, TXT_ERROR
+   17 0111 CD 15 01    	    call PRINT
+   18 0114 C9          	    ret 
+   19 0115             	
+   20 0115             	    include "print.asm"
+# source: print.asm
+    1 0115             	
+    2 0115             	; PRINT a zero-terminated string in MSX-DOS
+    3 0115             	; INPUT: HL points to start of string
+    4 0115             	PRINT:
+    5 0115             	    ; Check if the passed HL lies between start and end
+    6 0115             	    ;
+    7 0115             	    ; ASSERT HL>=TXT_ZERO_TERMINATED_START && HL<TXT_ZERO_TERMINATED_END
+    8 0115 7E          	    ld a, (hl)
+    9 0116 A7          	    and a
+   10 0117 C8          	    ret z
+   11 0118             	    ;
+   12 0118 E5          	    push hl
+   13 0119 5F          	    ld e, a
+   14 011A 0E 02       	    ld c, _CONOUT
+   15 011C CD 05 00    	    call BDOS
+   16 011F E1          	    pop hl
+   17 0120             	    ;
+   18 0120 23          	    inc hl
+   19 0121 18 F2       	    jr PRINT
+   20 0123             	
+   21 0123             	TXT_ZERO_TERMINATED_START
+   22 0123 0D 0A 44 65 62 75 67 67 69 6E 67 20 77 69 74 68 20 44 65 7A 6F 67 00 	TXT_HELLO2 DB "\r\nDebugging with Dezog",0
+   23 013A             	TXT_ZERO_TERMINATED_END
+# source: main-include.asm
+   21 013A             	
+   22 013A 48 65 6C 6C 6F 20 4D 53 58 21 24 	TXT_HELLO1 DB "Hello MSX!$"
+   23 0145 00          	TXT_ERROR  DB 0
+   24 0146             	

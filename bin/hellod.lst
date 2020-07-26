@@ -1,0 +1,46 @@
+# file opened: main-direct.asm
+ 1    0000              ; MSX-DOS function codes
+ 2    0000              CHPUT equ 0A2h
+ 3    0000
+ 4    0000              ; Our program!
+ 5    0000                  org 0C000h
+ 6    C000              START:
+ 7    C000 21 1C C0         ld hl, TXT_HELLO1
+ 8    C003 CD 13 C0         call PRINT
+ 9    C006 21 27 C0         ld hl, TXT_HELLO2
+10    C009 CD 13 C0         call PRINT
+11    C00C                  ; the following should trigger an error
+12    C00C 21 3E C0         ld hl, TXT_ERROR
+13    C00F CD 13 C0         call PRINT
+14    C012 C9               ret
+15    C013
+16    C013              ; PRINT a zero-terminated string in MSX-DOS
+17    C013              ; INPUT: HL points to start of string
+18    C013              PRINT:
+19    C013                  ; Check if the passed HL lies between start and end
+20    C013                  ;
+21    C013                  ; ASSERT HL>=TXT_ZERO_TERMINATED_START && HL<TXT_ZERO_TERMINATED_END
+22    C013 7E               ld a, (hl)
+23    C014 A7               and a
+24    C015 C8               ret z
+25    C016                  ;
+26    C016 CD A2 00         call CHPUT
+27    C019                  ;
+28    C019 23               inc hl
+29    C01A 18 F7            jr PRINT
+30    C01C
+31    C01C              TXT_ZERO_TERMINATED_START
+32    C01C 48 65 6C 6C  TXT_HELLO1 DB "Hello MSX!",0
+32    C020 6F 20 4D 53
+32    C024 58 21 00
+33    C027 0D 0A 44 65  TXT_HELLO2 DB "\r\nDebugging with Dezog",0
+33    C02B 62 75 67 67
+33    C02F 69 6E 67 20
+33    C033 77 69 74 68
+33    C037 20 44 65 7A
+33    C03B 6F 67 00
+34    C03E              TXT_ZERO_TERMINATED_END
+35    C03E
+36    C03E 00           TXT_ERROR  DB 0
+37    C03F
+# file closed: main-direct.asm

@@ -1,15 +1,11 @@
 ; MSX-DOS function codes
-_STROUT equ 09h
-_CONOUT equ 02h
-; MSX-DOS entry point
-BDOS equ 0005h
+CHPUT equ 0A2h
 
 ; Our program!
-    org 0100h
+    org 0C000h
 START:
-    ld de, TXT_HELLO1
-    ld c, _STROUT
-    call BDOS
+    ld hl, TXT_HELLO1
+    call PRINT
     ld hl, TXT_HELLO2
     call PRINT
     ; the following should trigger an error
@@ -27,17 +23,13 @@ PRINT:
     and a
     ret z
     ;
-    push hl
-    ld e, a
-    ld c, _CONOUT
-    call BDOS
-    pop hl
+    call CHPUT
     ;
     inc hl
     jr PRINT
 
-TXT_HELLO1 DB "Hello MSX!$"
 TXT_ZERO_TERMINATED_START
+TXT_HELLO1 DB "Hello MSX!",0
 TXT_HELLO2 DB "\r\nDebugging with Dezog",0
 TXT_ZERO_TERMINATED_END
 
